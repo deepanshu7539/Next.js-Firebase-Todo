@@ -2,6 +2,8 @@
 
 This is a simple Todo application built with Next.js and Firebase. The application allows users to authenticate with Google, add, toggle, and delete todos.
 
+## Live Demo 
+- [https://next-js-firebase-todo-phi.vercel.app/]([https://nextjs.org/](https://next-js-firebase-todo-phi.vercel.app/)) - Vercel link
 ## Features
 
 - Google Authentication
