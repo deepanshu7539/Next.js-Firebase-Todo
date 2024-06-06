@@ -1,4 +1,5 @@
 import React from "react";
+
 import {
   Box,
   Input,
@@ -8,8 +9,11 @@ import {
   Select,
   useToast,
 } from "@chakra-ui/react";
+// import { FaClock, FaCheck } from "react-icons/fa"; // Importing specific icons from react-icons
+
 import useAuth from "../hooks/useAuth";
 import { addTodo } from "../api/todo";
+
 const AddTodo = () => {
   const [title, setTitle] = React.useState("");
   const [description, setDescription] = React.useState("");
@@ -17,7 +21,6 @@ const AddTodo = () => {
   const [isLoading, setIsLoading] = React.useState(false);
 
   const toast = useToast();
-
   const { isLoggedIn, user } = useAuth();
 
   const handleTodoCreate = async () => {
@@ -55,28 +58,25 @@ const AddTodo = () => {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
-
         <Textarea
           placeholder="Description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
-
         <Select value={status} onChange={(e) => setStatus(e.target.value)}>
           <option
             value={"pending"}
             style={{ color: "yellow", fontWeight: "bold" }}
           >
-            Pending ⌛
+            Pending {/* Using the FaClock icon */}
           </option>
           <option
             value={"completed"}
             style={{ color: "green", fontWeight: "bold" }}
           >
-            Completed ✅
+            Completed {/* Using the FaCheck icon */}
           </option>
         </Select>
-
         <Button
           onClick={() => handleTodoCreate()}
           disabled={title.length < 1 || description.length < 1 || isLoading}

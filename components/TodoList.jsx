@@ -1,3 +1,4 @@
+import React, { useEffect } from "react";
 import {
   Badge,
   Box,
@@ -6,12 +7,12 @@ import {
   Text,
   useToast,
 } from "@chakra-ui/react";
-import React, { useEffect } from "react";
 import useAuth from "../hooks/useAuth";
 import { collection, onSnapshot, query, where } from "firebase/firestore";
 import { db } from "../firebase";
-import { FaToggleOff, FaToggleOn, FaTrash } from "react-icons/fa";
+// import { FaToggleOff, FaToggleOn, FaTrash } from "react-icons/fa";
 import { deleteTodo, toggleTodoStatus } from "../api/todo";
+
 const TodoList = () => {
   const [todos, setTodos] = React.useState([]);
 
@@ -45,11 +46,11 @@ const TodoList = () => {
   };
 
   const handleToggle = async (id, status) => {
-    const newStatus = status == "completed" ? "pending" : "completed";
+    const newStatus = status === "completed" ? "pending" : "completed";
     await toggleTodoStatus({ docId: id, status: newStatus });
     toast({
       title: `Todo marked ${newStatus}`,
-      status: newStatus == "completed" ? "success" : "warning",
+      status: newStatus === "completed" ? "success" : "warning",
     });
   };
 
@@ -80,10 +81,10 @@ const TodoList = () => {
                   size="xs"
                   onClick={() => handleTodoDelete(todo.id)}
                 >
-                  <FaTrash />
+                  {/* <FaTrash /> */}
                 </Badge>
                 <Badge
-                  color={todo.status == "pending" ? "gray.500" : "green.500"}
+                  color={todo.status === "pending" ? "gray.500" : "green.500"}
                   bg="inherit"
                   transition={"0.2s"}
                   _hover={{
@@ -94,12 +95,12 @@ const TodoList = () => {
                   size="xs"
                   onClick={() => handleToggle(todo.id, todo.status)}
                 >
-                  {todo.status == "pending" ? <FaToggleOff /> : <FaToggleOn />}
+                  {todo.status === "pending" ? "✅" : "❎"}
                 </Badge>
                 <Badge
                   float="right"
                   opacity="0.8"
-                  bg={todo.status == "pending" ? "yellow.500" : "green.500"}
+                  bg={todo.status === "pending" ? "yellow.500" : "green.500"}
                 >
                   {todo.status}
                 </Badge>

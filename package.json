@@ -22,5 +22,9 @@
   "devDependencies": {
     "eslint": "8.22.0",
     "eslint-config-next": "12.2.5"
-  }
+  },
+  "description": "[Click here](https://anjalbinayak.medium.com/how-to-create-todo-app-with-nextjs-firebase-383dcee65076) to read this article",
+  "main": "next.config.js",
+  "author": "",
+  "license": "ISC"
 }
